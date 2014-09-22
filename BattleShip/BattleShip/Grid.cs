@@ -38,7 +38,11 @@ namespace BattleShip
 
             //make a list of ships
             this.ListOfShips = new List<Ship>() { new Ship(Ship.ShipType.Carrier), new Ship(Ship.ShipType.Battleship), new Ship(Ship.ShipType.Cruiser), new Ship(Ship.ShipType.Submarine), new Ship(Ship.ShipType.Minesweeper) };
-
+            PlaceShip(this.ListOfShips[0], PlaceShipDirection.Horizontal, 0, 0);
+            PlaceShip(this.ListOfShips[1], PlaceShipDirection.Vertical, 3, 2);
+            PlaceShip(this.ListOfShips[2], PlaceShipDirection.Horizontal, 4, 2);
+            PlaceShip(this.ListOfShips[3], PlaceShipDirection.Vertical, 9, 1);
+            PlaceShip(this.ListOfShips[4], PlaceShipDirection.Horizontal, 8, 8);
             
         }
 
@@ -66,19 +70,11 @@ namespace BattleShip
             public void DisplayOcean()
             {
 
-                Console.WriteLine("0 1 2 3 4 5 6 7 8 9 X");
-                Console.WriteLine("0 ||");
-                Console.WriteLine("1 ||");
-                Console.WriteLine("2 ||");
-                Console.WriteLine("3 ||");
-                Console.WriteLine("4 ||");
-                Console.WriteLine("5 ||");
-                Console.WriteLine("6 ||");
-                Console.WriteLine("7 ||");
-                Console.WriteLine("8 ||");
-                Console.WriteLine("9 ||");
+                Console.WriteLine("=======0==1==2==3==4==5==6==7==8==9=====X");
+                Console.WriteLine("=Y==");
                 for (int y = 0; y <= 9; y++)
                 {
+                    Console.Write(" " + y + "||  ");
                     for (int x = 0; x <= 9; x++)
                     {
                         if (Ocean[x, y].Status == Point.PointStatus.Hit)
@@ -89,7 +85,7 @@ namespace BattleShip
                         {
                             Console.Write("[O]");
                         }
-                        else if (Ocean[x, y].Status == Point.PointStatus.Empty)
+                        else if (Ocean[x, y].Status == Point.PointStatus.Empty || Ocean[x, y].Status == Point.PointStatus.Ship)
                         {
                             Console.Write("[ ]");
                         }
@@ -118,6 +114,7 @@ namespace BattleShip
                 {
                     //display the ocean
                     DisplayOcean();
+                    Console.WriteLine();
                     //ask user to enter coordinates
                     Console.WriteLine("Please enter an X coordinate.");
                     Console.WriteLine();

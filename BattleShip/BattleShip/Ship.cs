@@ -43,15 +43,8 @@ namespace BattleShip
                 default:
                 break;
 	        }
-
-
-
-
-
-
-
-
-
+        
         }
+
     }
 }
