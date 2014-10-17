@@ -27,7 +27,9 @@ namespace BattleShip
             //this is what the code will look like for each point run through two loops
             //for each row, then for each column, write the pointstatus
             //this.Ocean[1, 1] = new Point(1, 1, Point.PointStatus.Empty);
-            //fill each ocean with a point
+            //by default, each point status is set to NULL, we need to set them to a status of empty
+            //fill the ocean with points
+
             for (int y = 0; y <= 9; y++)
             {
                 for (int x = 0; x <= 9; x++)
@@ -49,7 +51,7 @@ namespace BattleShip
             //place each ship in the list of ships using placeship()
             public void PlaceShip (Ship shipToPlace, PlaceShipDirection direction, int startX, int startY)
             {
-                for (int i = 1; i < shipToPlace.Length; i++)
+                for (int  i = 1; i < shipToPlace.Length; i++)
 			    {
 			        var startingPoint =  Ocean[startX, startY];
                     startingPoint.Status = Point.PointStatus.Ship;
